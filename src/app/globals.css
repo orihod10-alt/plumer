@@ -1,26 +1,127 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-dark:    #0E0F12;
+  --bg-darker:  #08090B;
+  --bg-light:   #F4F1EA;
+  --ink:        #14151A;
+  --paper:      #F4F1EA;
+  --muted-d:    #9A9CA3;
+  --muted-l:    #5B5C61;
+  --accent:     #C2683A;
+  --accent-2:   #E8855A;
+  --stroke-d:   rgba(255,255,255,0.10);
+  --stroke-l:   rgba(20,21,26,0.10);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--accent);
+  color: #0E0F12;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-dark);
+  color: var(--paper);
+  font-family: var(--font-assistant), sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Blueprint grid */
+.blueprint-grid {
+  background-image:
+    repeating-linear-gradient(
+      rgba(255,255,255,0.025) 0px,
+      rgba(255,255,255,0.025) 1px,
+      transparent 1px,
+      transparent 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.025) 0px,
+      rgba(255,255,255,0.025) 1px,
+      transparent 1px,
+      transparent 40px
+    );
+}
+
+/* Liquid glass */
+.liquid-glass {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.10);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.45) 0%,
+    rgba(255,255,255,0.15) 20%,
+    rgba(255,255,255,0) 40%,
+    rgba(255,255,255,0) 60%,
+    rgba(255,255,255,0.15) 80%,
+    rgba(255,255,255,0.45) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .liquid-glass {
+    background: rgba(20, 21, 26, 0.82);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+/* Glow pulse animation */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 16px rgba(194,104,58,0.5),
+      0 0 40px rgba(194,104,58,0.2),
+      0 4px 16px rgba(0,0,0,0.4);
+  }
+  50% {
+    box-shadow:
+      0 0 28px rgba(194,104,58,0.75),
+      0 0 64px rgba(194,104,58,0.35),
+      0 4px 16px rgba(0,0,0,0.4);
+  }
+}
+
+.glow-pulse {
+  animation: glow-pulse 2.4s ease-in-out infinite;
+}
+
+/* Mono / display helpers */
+.mono {
+  font-family: var(--font-space-mono), monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.display {
+  font-family: var(--font-suez), serif;
 }
