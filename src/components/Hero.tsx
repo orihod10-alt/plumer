@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, MessageCircle, Droplets, CheckCircle2 } from "lucide-react";
 import BlurText from "./BlurText";
@@ -25,23 +26,45 @@ const fadeRise = (delay: number) => ({
 });
 
 export default function Hero() {
+  const [bgFailed, setBgFailed] = useState(false);
+
   return (
     <section
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden blueprint-grid"
       style={{ background: "var(--bg-dark)" }}
     >
-      {/* Amber glow behind headline */}
+      {/* ── Background photo ── */}
+      {!bgFailed && (
+        <img
+          src="/hero-bg.jpg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
+          onError={() => setBgFailed(true)}
+        />
+      )}
+
+      {/* ── Dark overlay — keeps text readable over any photo ── */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 flex items-center justify-center"
-      >
-        <div
-          className="w-[70vw] max-w-[700px] h-[50vh] rounded-full blur-[120px] opacity-20"
-          style={{ background: "radial-gradient(ellipse, var(--accent) 0%, transparent 70%)" }}
-        />
-      </div>
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(14,15,18,0.80) 0%, rgba(14,15,18,0.65) 50%, rgba(14,15,18,0.90) 100%)",
+        }}
+      />
 
-      {/* Top & bottom readability gradients */}
+      {/* ── Amber radial glow behind headline ── */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute w-[600px] h-[600px] blur-3xl left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(194,104,58,0.20) 0%, transparent 70%)",
+        }}
+      />
+
+      {/* ── Top & bottom fade ── */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-40"
