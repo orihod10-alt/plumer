@@ -126,7 +126,7 @@ function GalleryTile({
       viewport={{ once: false, amount: 0.2 }}
       transition={{ duration: 0.65, ease: EASE, delay: index * 0.08 }}
       /* tile shell */
-      className="aspect-[4/5] rounded-2xl overflow-hidden relative group cursor-pointer border shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+      className="aspect-[4/3] rounded-2xl overflow-hidden relative group cursor-pointer border shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
       style={
         {
           borderColor: "rgba(20,21,26,0.1)",
@@ -234,12 +234,12 @@ function GalleryTile({
       >
         <p
           className="display font-bold leading-tight text-white pb-0.5"
-          style={{ fontSize: "1rem", textShadow: "0 1px 8px rgba(0,0,0,0.7)" }}
+          style={{ fontSize: "clamp(0.75rem,2.2vw,1rem)", textShadow: "0 1px 8px rgba(0,0,0,0.7)" }}
         >
           {project.title}
         </p>
         <p
-          className="text-xs"
+          className="text-[0.65rem] sm:text-xs"
           style={{
             color: "rgba(255,255,255,0.65)",
             fontFamily: "var(--font-assistant)",
@@ -406,7 +406,7 @@ export default function Gallery() {
         style={{ background: "var(--bg-light)" }}
         aria-labelledby="gallery-heading"
       >
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           {/* ── Heading ── */}
           <div className="text-center mb-14">
             <motion.p
@@ -443,7 +443,7 @@ export default function Gallery() {
           </div>
 
           {/* ── Uniform grid ── */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
             {PROJECTS.map((project, i) => (
               <GalleryTile
                 key={project.index}

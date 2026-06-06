@@ -6,7 +6,6 @@ import Hero from "@/components/Hero";
 import TrustStrip from "@/components/TrustStrip";
 import Services from "@/components/Services";
 import ProcessSection from "@/components/ProcessSection";
-import WhyMe from "@/components/WhyMe";
 import Gallery from "@/components/Gallery";
 import BeforeAfter from "@/components/BeforeAfter";
 import Credentials from "@/components/Credentials";
@@ -35,7 +34,6 @@ export default function HomePage() {
         <TrustStrip />
         <Services />
         <ProcessSection />
-        <WhyMe />
         <Gallery />
         <BeforeAfter />
         <Credentials />
