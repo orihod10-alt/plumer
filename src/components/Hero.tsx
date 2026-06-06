@@ -158,20 +158,6 @@ export default function Hero() {
           ))}
         </motion.div>
 
-        {/* Scroll hint */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.4, duration: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-          aria-hidden="true"
-        >
-          <div className="w-[1px] h-12 opacity-30" style={{ background: "linear-gradient(to bottom, transparent, var(--accent))" }} />
-          <div
-            className="w-4 h-4 rounded-full opacity-50"
-            style={{ background: "var(--accent)", boxShadow: "0 0 8px var(--accent)" }}
-          />
-        </motion.div>
       </div>
     </section>
   );
