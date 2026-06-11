@@ -25,10 +25,34 @@ const spaceMono = Space_Mono({
   display: "swap",
 });
 
+const SITE_URL = "https://plumer.vercel.app";
+const SITE_NAME = "שלומי אינסטלציה";
+const SITE_DESC = "אינסטלטור מוסמך ומנוסה. זמין 24/7 לכל תקלה. סתימות, נזילות, דודי שמש ועוד. מגיע מהר, עובד בנקייה, מחיר שקוף.";
+
 export const metadata: Metadata = {
-  title: "שלומי אינסטלציה | אינסטלטור מוסמך זמין 24/7",
-  description: "אינסטלטור מוסמך ומנוסה. זמין 24/7 לכל תקלה. סתימות, נזילות, דודי שמש ועוד. מגיע מהר, עובד בנקייה, מחיר שקוף.",
+  title: `${SITE_NAME} | אינסטלטור מוסמך זמין 24/7`,
+  description: SITE_DESC,
   keywords: "אינסטלטור, אינסטלציה, סתימות, נזילות, דוד שמש, תל אביב",
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} | אינסטלטור מוסמך זמין 24/7`,
+    description: SITE_DESC,
+    locale: "he_IL",
+    images: [
+      {
+        url: `${SITE_URL}/icon.png`,
+        width: 728,
+        height: 724,
+        alt: SITE_NAME,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
