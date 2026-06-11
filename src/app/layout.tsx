@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suez_One, Assistant, Space_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const suezOne = Suez_One({
@@ -44,6 +45,7 @@ export default function RootLayout({
       <body className="min-h-full">
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
